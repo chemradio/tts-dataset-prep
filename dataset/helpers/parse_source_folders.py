@@ -12,6 +12,7 @@ def parse_source_folders(sources_root_path: Path | str) -> list:
                 + list(folder.glob("*.wav"))
                 + list(folder.glob("*.MP3"))
             )
+            
             if script_files and audio_files:
                 source_folders.append(
                     {
@@ -20,5 +21,10 @@ def parse_source_folders(sources_root_path: Path | str) -> list:
                         "audio": audio_files[0],
                     }
                 )
+            
+            if (folder/"denoised").exists():
+                denoised_audio_files = list((folder/"denoised").glob("*.wav"))
+                if denoised_audio_files:
+                    source_folders[-1]["denoised"] = denoised_audio_files[0]
 
     return source_folders
