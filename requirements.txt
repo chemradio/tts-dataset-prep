@@ -1,5 +1,4 @@
-DeepFilterLib==0.5.6
-DeepFilterNet==0.5.6
+setuptools
+wheel
 pydub==0.25.1
-torch==2.2.1
-torchaudio==2.2.1
+pysbd

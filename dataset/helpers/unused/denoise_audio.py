@@ -16,7 +16,9 @@ def denoise_audio(input_audio_path: Path | str, output_audio_path: Path | str) -
 
 
 def denoise_folder(folder: dict[Path]) -> dict[Path]:
+    print(f"Denoising folder {str(folder['folder'])}")
     if not folder.get("denoised"):
+        print(f'Denoising audio {folder["audio"]}')
         denoised_folder = folder["folder"] / "denoised"
         denoised_folder.mkdir(exist_ok=True)
 
@@ -24,4 +26,6 @@ def denoise_folder(folder: dict[Path]) -> dict[Path]:
         denoise_audio(folder["audio"], denoised_path)
         folder["denoised"] = denoised_path
 
-    return folder
+        return folder
+    else:
+        print("Folder was previously denoised")
