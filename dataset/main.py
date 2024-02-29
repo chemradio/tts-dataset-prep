@@ -2,8 +2,10 @@ from helpers.parse_source_folders import parse_source_folders
 from helpers.tag_id import tag_folder
 from pathlib import Path
 from helpers.prep_folder_export import prepare_folder_export
-SOURCES_ROOT_PATH = Path.cwd() / "source_files"
+from helpers.gather_exports import gather_consolidate_exported_files
 
+SOURCES_ROOT_PATH = Path.cwd() / "source_files"
+GLOBAL_EXPORT_PATH = Path.cwd() / "export"
 
 def main():
 
@@ -28,6 +30,10 @@ def main():
         # simulate or real
 
         print("_"*20)
+
+    gather_consolidate_exported_files(GLOBAL_EXPORT_PATH, SOURCES_ROOT_PATH)
+# def test():
+#     gather_consolidate_exported_files()
 
 if __name__ == "__main__":
     main()
